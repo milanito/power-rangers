@@ -1,7 +1,8 @@
 import React from "react"
 import { Header, Container, Button, Icon } from 'semantic-ui-react'
 
-export default ({ mobile }) => (
+export default ({ mobile, pathname }) => (
+  pathname === '/' &&
   <Container text>
     <Header
       as='h1'
