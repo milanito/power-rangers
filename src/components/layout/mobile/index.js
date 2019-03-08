@@ -1,15 +1,15 @@
 import React, { useState } from "react"
 import {
-    Button,
     Container,
     Icon,
-    Menu,
     Responsive,
     Segment,
     Sidebar,
+    Menu
 } from 'semantic-ui-react'
 
 import Header from '../../header'
+import CustomMenu from '../../Menu'
 
 export default ({ children, location }) => {
     const [sidebarOpened, setsidebarOpened] = useState(false);
@@ -30,14 +30,7 @@ export default ({ children, location }) => {
                 vertical
                 visible={sidebarOpened}
             >
-                <Menu.Item as='a' active>
-                    Home
-        </Menu.Item>
-                <Menu.Item as='a'>Work</Menu.Item>
-                <Menu.Item as='a'>Company</Menu.Item>
-                <Menu.Item as='a'>Careers</Menu.Item>
-                <Menu.Item as='a'>Log in</Menu.Item>
-                <Menu.Item as='a'>Sign Up</Menu.Item>
+                <CustomMenu />
             </Sidebar>
 
             <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -52,17 +45,9 @@ export default ({ children, location }) => {
                             <Menu.Item onClick={showSidebarOpenedMenu}>
                                 <Icon name='sidebar' />
                             </Menu.Item>
-                            <Menu.Item position='right'>
-                                <Button as='a' inverted>
-                                    Log in
-                </Button>
-                                <Button as='a' inverted style={{ marginLeft: '0.5em' }}>
-                                    Sign Up
-                </Button>
-                            </Menu.Item>
                         </Menu>
                     </Container>
-                    <Header mobile pathname={pathname}/>
+                    <Header mobile pathname={pathname} />
                 </Segment>
 
                 {children}
