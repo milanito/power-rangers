@@ -3,8 +3,19 @@ import { get } from 'lodash'
 import { graphql } from 'gatsby'
 import { compose, withProps } from 'recompose'
 
+import SEO from '../components/seo'
+import Layout from '../components/layout'
+import MainContainer from '../components/MainContainer'
+import { HTMLContent } from '../components/Content'
+
 const BlogPost = ({ pageTitle, post }) => (
-  <p>Article</p>
+  <Layout>
+    <SEO title={pageTitle} keywords={[`gatsby`, `application`, `react`]} />
+    <MainContainer>
+      <h1>{post.frontmatter.title}</h1>
+      <HTMLContent content={post.html} />
+    </MainContainer>
+  </Layout>
 )
 
 export const pageQuery = graphql`
