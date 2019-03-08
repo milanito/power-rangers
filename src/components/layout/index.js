@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 import DesktopContainer from './desktop/index'
 import MobileContainer from './mobile/index'

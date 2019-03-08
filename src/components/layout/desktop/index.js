@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import {
     Responsive,
     Segment,
@@ -22,18 +22,17 @@ export default ({ children, location }) => {
                 onBottomPassed={showFixedMenu}
                 onBottomPassedReverse={hideFixedMenu}
             >
-                {
-                    <Segment
+                <Segment
 
-                        inverted
-                        textAlign='center'
-                        style={{ minHeight, padding: '1em 0em' }}
-                        vertical
-                    >
-                        <Navbar fixed={fixed} />
-                        <Header pathname={pathname}/>
-                    </Segment>
-                }</Visibility>
+                    inverted
+                    textAlign='center'
+                    style={{ minHeight, padding: '1em 0em' }}
+                    vertical
+                >
+                    <Navbar fixed={fixed} />
+                    <Header pathname={pathname} />
+                </Segment>
+            </Visibility>
             {children}
         </Responsive>
     )

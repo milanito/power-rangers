@@ -1,7 +1,7 @@
-import React, { Fragment } from "react"
+import React, { Fragment } from 'react'
 import { get } from 'lodash'
 import { Menu } from 'semantic-ui-react'
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 export default () => {
     const data = useStaticQuery(graphql`
