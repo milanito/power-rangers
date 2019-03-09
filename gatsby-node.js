@@ -10,6 +10,7 @@ const POSTS_QUERY = `
         node {
           frontmatter {
             path
+            tags
           }
         }
       }
@@ -25,6 +26,18 @@ const createPostsPages = (createPage, posts) =>
     context: {}
   }))
 
+const createTagsPages = (createPage, posts) =>
+  forEach(uniq(reduce(posts, (tags, edge) => {
+    if (get(edge, `node.frontmatter.tags`)) {
+      return [...tags, ...edge.node.frontmatter.tags]
+    }
+    return tags
+  }, [])), tag => createPage({
+      path: `/tags/${kebabCase(tag)}/`,
+      component: path.resolve(`src/templates/tag-page.js`),
+      context: { tag },
+  }))
+
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
@@ -35,8 +48,8 @@ exports.createPages = ({ actions, graphql }) => {
         return Promise.reject(result.errors)
       }
 
-      // Posts pages
-      createPostsPages(createPage, result.data.allMarkdownRemark.edges)
+      forEach([createPostsPages, createTagsPages], fn =>
+        fn(createPage, result.data.allMarkdownRemark.edges))
     })
 }
 
