@@ -3,8 +3,20 @@ import { get } from 'lodash'
 import { graphql } from 'gatsby'
 import { compose, withProps } from 'recompose'
 
-const BlogPost = ({ pageTitle, post }) => (
-  <p>Article</p>
+import SEO from '../components/Seo'
+import Layout from '../components/Layout'
+import WithLocation from '../components/WithLocation'
+import MainContainer from '../components/MainContainer'
+import { HTMLContent } from '../components/Content'
+
+const BlogPost = ({ pageTitle, post, location }) => (
+  <Layout location={location}>
+    <SEO title={pageTitle} keywords={[`gatsby`, `application`, `react`]} />
+    <MainContainer>
+      <h1>{post.frontmatter.title}</h1>
+      <HTMLContent content={post.html} />
+    </MainContainer>
+  </Layout>
 )
 
 export const pageQuery = graphql`
@@ -20,12 +32,8 @@ export const pageQuery = graphql`
   }
 `
 
-export const BlogPostTemplate = compose(withProps(({ data }) => ({
+export default compose(withProps(({ data }) => ({
   post: get(data, 'markdownRemark', {})
-})),
-withProps(({ post }) => ({
+})), withProps(({ post }) => ({
   pageTitle: `${post.frontmatter.title} | Blog`
-}))
-)(BlogPost)
-
-export default BlogPostTemplate
+})), WithLocation)(BlogPost)
