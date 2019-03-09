@@ -4,8 +4,8 @@ import { kebabCase, map } from 'lodash'
 import { compose, withProps } from 'recompose'
 import { Link, graphql, StaticQuery } from 'gatsby'
 
-import SEO from '../components/seo'
-import Layout from '../components/layout'
+import SEO from '../components/Seo'
+import Layout from '../components/Layout'
 
 const TAGS_QUERY = graphql`
   query TagsQuery {

@@ -4,8 +4,8 @@ import { Header, List } from 'semantic-ui-react'
 import { Link, graphql } from 'gatsby'
 import { compose, withProps } from 'recompose'
 
-import SEO from '../components/seo'
-import Layout from '../components/layout'
+import SEO from '../components/Seo'
+import Layout from '../components/Layout'
 import WithLocation from '../components/WithLocation'
 
 const PostsLinks = ({ posts }) => map(posts, post => (
