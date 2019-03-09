@@ -1,17 +1,17 @@
 import React from 'react'
 
-import DesktopContainer from './desktop/index'
-import MobileContainer from './mobile/index'
+import MobileContainer from './Mobile/index'
+import DesktopContainer from './Desktop/index'
 
 const ResponsiveContainer = ({ children, location }) => (
-    <div>
-        <DesktopContainer location={location}>{children}</DesktopContainer>
-        <MobileContainer location={location}>{children}</MobileContainer>
-    </div>
+  <div>
+    <DesktopContainer location={location}>{children}</DesktopContainer>
+    <MobileContainer location={location}>{children}</MobileContainer>
+  </div>
 )
 
 export default ({ children, location }) => (
-    <ResponsiveContainer location={location}>
-        {children}
-    </ResponsiveContainer>
+  <ResponsiveContainer location={location}>
+    {children}
+  </ResponsiveContainer>
 )

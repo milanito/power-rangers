@@ -4,19 +4,19 @@ import { Container, Button, Icon } from 'semantic-ui-react'
 
 const MainTitle = styled.h1`
   &&& {
-    font-size: ${props => props.mobile ? "2em" : "4em"};
+    font-size: ${props => props.mobile ? '2em' : '4em'};
     font-weight: normal;
     margin-bottom: 0;
-    margin-top: ${props => props.mobile ? "1.5em" : "3em"};
+    margin-top: ${props => props.mobile ? '1.5em' : '3em'};
   }
 `
 
 const SubTitle = styled.h2`
   &&& {
-    font-size: ${props => props.mobile ? "1.5em" : "'1.7em"};
+    font-size: ${props => props.mobile ? '1.5em' : "'1.7em"};
     font-weight: normal;
     margin-bottom: 0;
-    margin-top: ${props => props.mobile ? "0.5em" : "1.5em"};
+    margin-top: ${props => props.mobile ? '0.5em' : '1.5em'};
   }
 `
 export default ({ mobile, pathname }) => (
