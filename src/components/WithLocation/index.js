@@ -3,7 +3,7 @@ import { Location } from '@reach/router'
 
 export default Component => props => (
   <Location>
-    {({ location })=> (
+    {({ location }) => (
       <Component {...props} location={location} />
     )}
   </Location>
