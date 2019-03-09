@@ -5,7 +5,7 @@ import { isEqual, find, get } from 'lodash'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { branch, renderComponent, compose, withProps } from 'recompose'
 
-const IMAGES_QUERY  = graphql`
+const IMAGES_QUERY = graphql`
   query BlogImages {
      images: allFile(filter:{ extension: { regex: "/jpeg|jpg|png|gif/"}}) {
       edges {
@@ -36,7 +36,7 @@ const TypedImage = compose(branch(({ type }) => isEqual(type, 'extract'),
 const Image = compose(withProps(({ imagePath, data }) => ({
   image: get(find(data.images.edges,
     ({ node: { relativePath } }) => isEqual(relativePath, imagePath)),
-    'node.childImageSharp.fluid')
+  'node.childImageSharp.fluid')
 })))(TypedImage)
 
 export default props => (

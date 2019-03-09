@@ -32,7 +32,7 @@ const INDEX_QUERY = graphql`
 `
 
 const PostsList = ({ posts }) => map(posts,
-  post => (<PostExtract {...post} key={post.frontmatter.title}/>))
+  post => (<PostExtract {...post} key={post.frontmatter.title} />))
 
 const IndexPage = ({ location, posts }) => (
   <Layout location={location} >

@@ -7,7 +7,7 @@ import PostImage from '../PostImage'
 
 export default ({ excerpt, frontmatter: { path, title, imagePath, date, tags } }) => (
   <Item>
-    <PostImage type='extract' imagePath={imagePath} to={path}/>
+    <PostImage type='extract' imagePath={imagePath} to={path} />
     <Item.Content>
       <Item.Header as={Link} to={path}>{title}</Item.Header>
       <Item.Meta>{date}</Item.Meta>
