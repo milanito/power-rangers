@@ -3,8 +3,8 @@ import { get } from 'lodash'
 import { graphql } from 'gatsby'
 import { compose, withProps } from 'recompose'
 
-import SEO from '../components/seo'
-import Layout from '../components/layout'
+import SEO from '../components/Seo'
+import Layout from '../components/Layout'
 import MainContainer from '../components/MainContainer'
 import { HTMLContent } from '../components/Content'
 
