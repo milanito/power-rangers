@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import MobileContainer from './Mobile/index'
 import DesktopContainer from './Desktop/index'
 
 const ResponsiveContainer = ({ children, location }) => (
-  <div>
+  <Fragment>
     <DesktopContainer location={location}>{children}</DesktopContainer>
     <MobileContainer location={location}>{children}</MobileContainer>
-  </div>
+  </Fragment>
 )
 
 export default ({ children, location }) => (
