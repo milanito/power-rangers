@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import { Link } from 'gatsby'
 import { Segment, Container, Grid, Header, List } from 'semantic-ui-react'
 
 export default () => (
