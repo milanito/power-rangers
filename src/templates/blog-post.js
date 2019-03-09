@@ -23,9 +23,9 @@ export const pageQuery = graphql`
 export const BlogPostTemplate = compose(withProps(({ data }) => ({
   post: get(data, 'markdownRemark', {})
 })),
-  withProps(({ post }) => ({
-    pageTitle: `${post.frontmatter.title} | Blog`
-  }))
+withProps(({ post }) => ({
+  pageTitle: `${post.frontmatter.title} | Blog`
+}))
 )(BlogPost)
 
 export default BlogPostTemplate
