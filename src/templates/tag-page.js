@@ -6,7 +6,6 @@ import { compose, withProps } from 'recompose'
 
 import SEO from '../components/Seo'
 import Layout from '../components/Layout'
-import WithLocation from '../components/WithLocation'
 
 const PostsLinks = ({ posts }) => map(posts, post => (
   <List.Item key={post.node.frontmatter.title}>
@@ -41,7 +40,7 @@ export default compose(withProps(({ pageContext, data }) => ({
   tagHeader: `${totalCount} post${
     isEqual(totalCount, 1) ? '' : 's'
   } tagged with “${tag}”`
-})), WithLocation)(TagPage)
+})))(TagPage)
 
 export const tagPageQuery = graphql`
   query TagPage($tag: String) {

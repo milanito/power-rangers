@@ -8,7 +8,6 @@ import SEO from '../components/Seo'
 import Layout from '../components/Layout'
 import TagsList from '../components/TagsList'
 import PostImage from '../components/PostImage'
-import WithLocation from '../components/WithLocation'
 import MainContainer from '../components/MainContainer'
 import { HTMLContent } from '../components/Content'
 
@@ -43,4 +42,4 @@ export default compose(withProps(({ data }) => ({
   post: get(data, 'markdownRemark', {})
 })), withProps(({ post }) => ({
   pageTitle: `${post.frontmatter.title} | Blog`
-})), WithLocation)(BlogPost)
+})))(BlogPost)
