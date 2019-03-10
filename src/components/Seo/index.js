@@ -18,7 +18,7 @@ const SEO_QUERY = graphql`
 
 const LINKS = ['https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css']
 
-const SCRIPTS = ['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js',
+const SCRIPTS = ['https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js']
 
 const META_DATA = [{
@@ -68,10 +68,10 @@ const SEO = ({
 }) => (
   <Helmet
     title={title}
-    script={SCRIPTS}
     titleTemplate={titleTemplate}
     htmlAttributes={htmlAttributes}
     link={map(LINKS, href => ({ rel: 'stylesheet', href }))}
+    script={map(SCRIPTS, src => ({ type: 'text/javascript', src }))}
     meta={metaBuilder(keywords, meta, { title, metaDescription, author })}
   />
 )
