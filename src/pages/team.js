@@ -28,7 +28,7 @@ const TEAM_QUERY = graphql`
     }
 `
 
-const MenuMap = ({ menuArray }) => map(menuArray, ({ node: { header, avatar, date, description } }) => (
+const renderTeam = (data) => map(get(data, 'allTeamJson.edges', []), ({ node: { header, avatar, date, description } }) => (
   <Card key={header}>
     <Card.Content>
       <Img fixed={avatar.childImageSharp.fixed} />
@@ -48,15 +48,11 @@ const MenuMap = ({ menuArray }) => map(menuArray, ({ node: { header, avatar, dat
   </Card>
 ))
 
-const renderMenu = data => (
-  <MenuMap menuArray={get(data, 'allTeamJson.edges', [])} />
-)
-
 const IndexPage = ({ location }) => (
   <Layout location={location} >
     <SEO title='team' keywords={[`gatsby`, `application`, `react`]} />
     <Card.Group doubling itemsPerRow={3} stackable>
-      <StaticQuery query={TEAM_QUERY} render={renderMenu} />
+      <StaticQuery query={TEAM_QUERY} render={renderTeam} />
     </Card.Group>
   </Layout>
 )

@@ -26,6 +26,12 @@
     {
         "avatar": "../images/gatsby-astronaut.png",
         "date": "Joined in 2013",
+        "header": "Jérémmy",
+        "description": "Primary Contact"
+    },
+    {
+        "avatar": "../images/gatsby-astronaut.png",
+        "date": "Joined in 2013",
         "header": "Alexandre",
         "description": "Primary Contact"
     },
