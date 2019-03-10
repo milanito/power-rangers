@@ -1,0 +1,44 @@
+[
+    {
+        "avatar": "../images/gatsby-astronaut.png",
+        "date": "Joined in 2013",
+        "header": "Lydie",
+        "description": "Primary Contact"
+    },
+    {
+        "avatar": "../images/gatsby-astronaut.png",
+        "date": "Joined in 2013",
+        "header": "Matthieu",
+        "description": "Primary Contact"
+    },
+    {
+        "avatar": "../images/gatsby-astronaut.png",
+        "date": "Joined in 2013",
+        "header": "Benjamin",
+        "description": "Primary Contact"
+    },
+    {
+        "avatar": "../images/gatsby-astronaut.png",
+        "date": "Joined in 2013",
+        "header": "Patrick",
+        "description": "Primary Contact"
+    },
+    {
+        "avatar": "../images/gatsby-astronaut.png",
+        "date": "Joined in 2013",
+        "header": "Jérémmy",
+        "description": "Primary Contact"
+    },
+    {
+        "avatar": "../images/gatsby-astronaut.png",
+        "date": "Joined in 2013",
+        "header": "Alexandre",
+        "description": "Primary Contact"
+    },
+    {
+        "avatar": "../images/gatsby-astronaut.png",
+        "date": "Joined in 2013",
+        "header": "Nicolas",
+        "description": "Primary Contact"
+    }
+]

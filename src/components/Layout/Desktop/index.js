@@ -2,11 +2,17 @@ import React, { useState } from 'react'
 import {
   Responsive,
   Segment,
-  Visibility
+  Visibility,
+  Container
 } from 'semantic-ui-react'
+import styled from 'styled-components'
 
 import Navbar from './Navbar'
 import Header from '../../Header'
+
+const MainContainer = styled(Container)`
+      padding: 1em;
+`
 
 export default ({ children, location }) => {
   const [fixed, setFixed] = useState(false)
@@ -23,7 +29,6 @@ export default ({ children, location }) => {
         onBottomPassedReverse={hideFixedMenu}
       >
         <Segment
-
           inverted
           textAlign='center'
           style={{ minHeight, padding: '1em 0em' }}
@@ -33,7 +38,9 @@ export default ({ children, location }) => {
           <Header pathname={pathname} />
         </Segment>
       </Visibility>
-      {children}
+      <MainContainer>
+        {children}
+      </MainContainer>
     </Responsive>
   )
 }

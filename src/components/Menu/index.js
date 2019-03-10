@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import { Menu } from 'semantic-ui-react'
 import { map, get } from 'lodash'
+import { Menu } from 'semantic-ui-react'
 import { StaticQuery, graphql, Link } from 'gatsby'
 
 const MENU_QUERY = graphql`
