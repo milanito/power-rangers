@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import Img from 'gatsby-image'
+import { Card } from 'semantic-ui-react'
 import { map, get } from 'lodash'
-import { Card, Button } from 'semantic-ui-react'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 
 import SEO from '../components/Seo'
 import Layout from '../components/Layout'
@@ -28,6 +28,8 @@ const TEAM_QUERY = graphql`
     }
 `
 
+const getArticlesURL = author => `/author/${author}/`
+
 const renderTeam = (data) => map(get(data, 'allTeamJson.edges', []), ({ node: { header, avatar, date, description } }) => (
   <Card key={header}>
     <Card.Content>
@@ -40,10 +42,9 @@ const renderTeam = (data) => map(get(data, 'allTeamJson.edges', []), ({ node: { 
     </Card.Content>
 
     <Card.Content extra>
-      <Button primary>
-        Add
-      </Button>
-      <Button>Delete</Button>
+      <Link to={getArticlesURL(header)}>
+        Browse all articles
+      </Link>
     </Card.Content>
   </Card>
 ))

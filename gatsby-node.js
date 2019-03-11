@@ -1,16 +1,24 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
-const { get, uniq, kebabCase, forEach, isEqual, reduce } = require('lodash')
+const { get, uniq, kebabCase, forEach, isEqual, reduce, map } = require('lodash')
 
 const POSTS_QUERY = `
   {
+    allTeamJson {
+      edges {
+        node {
+          header
+        }
+      }
+    }
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
       edges {
         node {
           frontmatter {
             path
             tags
+            author
           }
         }
       }
@@ -38,6 +46,13 @@ const createTagsPages = (createPage, posts) =>
       context: { tag },
   }))
 
+const createAuthorPages = (createPage, authors) =>
+  forEach(authors, author => createPage({
+    path: `/author/${author}/`,
+    component: path.resolve(`src/templates/author-articles.js`),
+    context: { author },
+  }))
+
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
@@ -50,6 +65,9 @@ exports.createPages = ({ actions, graphql }) => {
 
       forEach([createPostsPages, createTagsPages], fn =>
         fn(createPage, result.data.allMarkdownRemark.edges))
+
+      createAuthorPages(createPage, map(result.data.allTeamJson.edges, ({ node }) =>
+        get(node, 'header')))
     })
 }
 
