@@ -11,7 +11,7 @@ import Navbar from './Navbar'
 import Header from '../../Header'
 
 const MainContainer = styled(Container)`
-      padding: 1em;
+  padding: 1em;
 `
 
 export default ({ children, location }) => {

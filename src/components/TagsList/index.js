@@ -1,16 +1,22 @@
 import React from 'react'
-import styled from 'styled-components'
 import { map } from 'lodash'
 import { Link } from 'gatsby'
+import { List } from 'semantic-ui-react'
 
 const getTagURL = tag => `/tags/${tag}`
 
-const SpacedLink = styled(Link)`
-  margin-right: 5px !important;
-`
-
-export default ({ tags }) => map(tags, tag => (
-  <SpacedLink to={getTagURL(tag)} key={tag}>
-    {tag}
-  </SpacedLink>
+const Tags = ({ tags }) => map(tags, tag => (
+  <List.Item key={tag}>
+    <Link to={getTagURL(tag)}>
+      <List.Content>
+        {tag}
+      </List.Content>
+    </Link>
+  </List.Item>
 ))
+
+export default ({ tags }) => (
+  <List horizontal link bulleted>
+    <Tags tags={tags} />
+  </List>
+)
