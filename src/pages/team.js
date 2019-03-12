@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
-
 import Img from 'gatsby-image'
 import { map, get } from 'lodash'
+import { Card, Button } from 'semantic-ui-react'
+import { StaticQuery, graphql } from 'gatsby'
+
 import SEO from '../components/Seo'
 import Layout from '../components/Layout'
-import { StaticQuery, graphql } from 'gatsby'
-import { Card, Button } from 'semantic-ui-react'
 
 const TEAM_QUERY = graphql`
   query GetTeam{

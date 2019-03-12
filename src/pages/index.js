@@ -1,6 +1,6 @@
 import React from 'react'
 import { get, map } from 'lodash'
-import { Header, Item } from 'semantic-ui-react'
+import { Header, Card } from 'semantic-ui-react'
 import { compose, withProps } from 'recompose'
 import { StaticQuery, graphql } from 'gatsby'
 
@@ -40,9 +40,9 @@ const IndexPage = ({ location, posts }) => (
     <Header as='h1' content='Hi people' />
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
-    <Item.Group>
+    <Card.Group id='articles-list'>
       <PostsList posts={map(posts, 'node')} />
-    </Item.Group>
+    </Card.Group>
   </Layout>
 )
 

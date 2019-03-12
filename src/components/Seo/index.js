@@ -4,6 +4,8 @@ import { compose, withProps } from 'recompose'
 import { StaticQuery, graphql } from 'gatsby'
 import { isEmpty, join, map, get } from 'lodash'
 
+import MAIN_STYLE from './main.style.js'
+
 const SEO_QUERY = graphql`
   query {
     site {
@@ -70,6 +72,7 @@ const SEO = ({
     title={title}
     titleTemplate={titleTemplate}
     htmlAttributes={htmlAttributes}
+    style={MAIN_STYLE}
     link={map(LINKS, href => ({ rel: 'stylesheet', href }))}
     script={map(SCRIPTS, src => ({ type: 'text/javascript', src }))}
     meta={metaBuilder(keywords, meta, { title, metaDescription, author })}

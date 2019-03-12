@@ -1,9 +1,10 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import { Item } from 'semantic-ui-react'
 import { isEqual, find, get } from 'lodash'
-import { StaticQuery, graphql, Link } from 'gatsby'
-import { branch, renderComponent, compose, withProps } from 'recompose'
+import { StaticQuery, graphql } from 'gatsby'
+import { compose, withProps } from 'recompose'
+
+import WithLink from '../WithLink'
 
 const IMAGES_QUERY = graphql`
   query BlogImages {
@@ -23,21 +24,11 @@ const IMAGES_QUERY = graphql`
   }
 `
 
-const TypedImage = compose(branch(({ type }) => isEqual(type, 'extract'),
-  renderComponent(({ image, to }) => (
-    <Link to={to}>
-      <Item.Image size='tiny' src={image.src} />
-    </Link>
-  )))
-)(({ image }) => (
-  <Img fluid={image} />
-))
-
 const Image = compose(withProps(({ imagePath, data }) => ({
-  image: get(find(data.images.edges,
+  fluid: get(find(data.images.edges,
     ({ node: { relativePath } }) => isEqual(relativePath, imagePath)),
   'node.childImageSharp.fluid')
-})))(TypedImage)
+})), WithLink)(Img)
 
 export default props => (
   <StaticQuery
