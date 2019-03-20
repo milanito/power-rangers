@@ -55,7 +55,7 @@ workflows:
   version: 2
   power-rangers:
     jobs:
-      - pre-build:
+      - pre-build
       - lint:
           requires:
             - pre-build
