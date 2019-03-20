@@ -49,7 +49,7 @@ jobs:
           command: CI=false npm run build:ci
       - run:
           name: Deploy website
-          command: aws s3 sync public/ s3://power-rangersiblog  --region eu-west-1 --delete
+          command: aws s3 sync public/ s3://power-rangers-blog  --region eu-west-1 --delete
 
 workflows:
   version: 2
