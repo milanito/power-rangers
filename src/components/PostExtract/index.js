@@ -16,7 +16,7 @@ export default ({ excerpt, frontmatter: { path, title, imagePath, date, tags } }
       </Fragment>
     </Card.Content>
     <Card.Content extra>
-        <TagsList tags={tags} />
+      <TagsList tags={tags} />
     </Card.Content>
   </Card>
 )

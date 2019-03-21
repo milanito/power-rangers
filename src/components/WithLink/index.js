@@ -7,4 +7,3 @@ export default branch(({ to }) => to, Component => ({ to, ...props }) => (
     <Component {...props} />
   </Link>
 ))
-
