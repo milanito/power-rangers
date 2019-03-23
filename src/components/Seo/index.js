@@ -72,7 +72,7 @@ const SEO = ({
     title={title}
     titleTemplate={titleTemplate}
     htmlAttributes={htmlAttributes}
-    style={MAIN_STYLE}
+    style={map(MAIN_STYLE, cssText => ({ type: 'text/css', cssText }))}
     link={map(LINKS, href => ({ rel: 'stylesheet', href }))}
     script={map(SCRIPTS, src => ({ type: 'text/javascript', src }))}
     meta={metaBuilder(keywords, meta, { title, metaDescription, author })}

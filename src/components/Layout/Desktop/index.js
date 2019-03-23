@@ -1,46 +1,41 @@
-import React, { useState } from 'react'
-import {
-  Responsive,
-  Segment,
-  Visibility,
-  Container
-} from 'semantic-ui-react'
+import React from 'react'
 import styled from 'styled-components'
+import { Responsive, Visibility, Container } from 'semantic-ui-react'
+import { compose, withState, withHandlers } from 'recompose'
 
 import Navbar from './Navbar'
 import Header from '../../Header'
+import HeaderSegment from '../HeaderSegment'
+import WithPathnameProps from '../WithPathnameProps'
 
 const MainContainer = styled(Container)`
   padding: 1em;
 `
 
-export default ({ children, location }) => {
-  const [fixed, setFixed] = useState(false)
-  const hideFixedMenu = () => setFixed(false)
-  const showFixedMenu = () => setFixed(true)
-  const { pathname } = location
-  const minHeight = pathname === '/' ? 700 : 0
+const DesktopContainer = ({
+  children, pathname, fixed, showFixedMenu, hideFixedMenu, minheight
+}) => (
+  <Responsive minWidth={Responsive.onlyTablet.minWidth}>
+    <Visibility
+      once={false}
+      onBottomPassed={showFixedMenu}
+      onBottomPassedReverse={hideFixedMenu}
+    >
+      <HeaderSegment inverted vertical textAlign='center' minheight={minheight}>
+        <Navbar fixed={fixed} />
+        <Header pathname={pathname} />
+      </HeaderSegment>
+    </Visibility>
+    <MainContainer>
+      {children}
+    </MainContainer>
+  </Responsive>
+)
 
-  return (
-    <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-      <Visibility
-        once={false}
-        onBottomPassed={showFixedMenu}
-        onBottomPassedReverse={hideFixedMenu}
-      >
-        <Segment
-          inverted
-          textAlign='center'
-          style={{ minHeight, padding: '1em 0em' }}
-          vertical
-        >
-          <Navbar fixed={fixed} />
-          <Header pathname={pathname} />
-        </Segment>
-      </Visibility>
-      <MainContainer>
-        {children}
-      </MainContainer>
-    </Responsive>
-  )
-}
+export default compose(withState('fixed', 'updateFixed', false),
+  withHandlers({
+    hideFixedMenu: ({ updateFixed }) => () => updateFixed(false),
+    showFixedMenu: ({ updateFixed }) => () => updateFixed(true)
+  }),
+  WithPathnameProps
+)(DesktopContainer)

@@ -1,17 +1,20 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { isMobile } from 'react-device-detect'
+import { branch, compose } from 'recompose'
 
 import MobileContainer from './Mobile/index'
 import DesktopContainer from './Desktop/index'
 
-const ResponsiveContainer = ({ children, location }) => (
-  <Fragment>
-    <DesktopContainer location={location}>{children}</DesktopContainer>
-    <MobileContainer location={location}>{children}</MobileContainer>
-  </Fragment>
-)
+const DesktopHandler = branch(() => !isMobile, Component => ({ location, ...props }) => (
+  <DesktopContainer location={location}>
+    <Component {...props} />
+  </DesktopContainer>
+))
 
-export default ({ children, location }) => (
-  <ResponsiveContainer location={location}>
-    {children}
-  </ResponsiveContainer>
-)
+const MobileHandler = branch(() => isMobile, Component => ({ location, ...props }) => (
+  <MobileContainer location={location}>
+    <Component {...props} />
+  </MobileContainer>
+))
+
+export default compose(MobileHandler, DesktopHandler)(({ children }) => children)
