@@ -1,26 +1,31 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Link } from 'gatsby'
 import { Segment, Container, Grid, Header, List } from 'semantic-ui-react'
 
+const FooterSegment = styled(Segment)`
+  padding: 5em 0em !important;
+`
+
 export default () => (
-  <Segment inverted vertical style={{ padding: '5em 0em' }}>
+  <FooterSegment inverted vertical>
     <Container>
       <Grid divided inverted stackable>
         <Grid.Row>
           <Grid.Column width={3}>
             <Header inverted as='h4' content='About' />
             <List link inverted>
-              <List.Item as={Link}>Sitemap</List.Item>
-              <List.Item as={Link}>Contact Us</List.Item>
+              <List.Item as={Link} to='/'>Sitemap</List.Item>
+              <List.Item as={Link} to='/'>Contact Us</List.Item>
             </List>
           </Grid.Column>
           <Grid.Column width={3}>
             <Header inverted as='h4' content='Services' />
             <List link inverted>
-              <List.Item as='a'>Banana Pre-Order</List.Item>
-              <List.Item as='a'>DNA FAQ</List.Item>
-              <List.Item as='a'>How To Access</List.Item>
-              <List.Item as='a'>Favorite X-Men</List.Item>
+              <List.Item as={Link} to='/'>Banana Pre-Order</List.Item>
+              <List.Item as={Link} to='/'>DNA FAQ</List.Item>
+              <List.Item as={Link} to='/'>How To Access</List.Item>
+              <List.Item as={Link} to='/'>Favorite X-Men</List.Item>
             </List>
           </Grid.Column>
           <Grid.Column width={7}>
@@ -34,5 +39,5 @@ export default () => (
         </Grid.Row>
       </Grid>
     </Container>
-  </Segment>
+  </FooterSegment>
 )

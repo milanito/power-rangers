@@ -18,10 +18,10 @@ const SEO_QUERY = graphql`
   }
 `
 
-const LINKS = ['https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css']
+const LINKS = ['https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css']
 
 const SCRIPTS = ['https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js']
+  'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js']
 
 const META_DATA = [{
   name: 'description',
