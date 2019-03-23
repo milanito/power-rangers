@@ -1,8 +1,8 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import { isEqual, find, get } from 'lodash'
-import { StaticQuery, graphql } from 'gatsby'
 import { compose, withProps } from 'recompose'
+import { StaticQuery, graphql } from 'gatsby'
+import { isEqual, find, get } from 'lodash'
 
 import WithLink from '../WithLink'
 

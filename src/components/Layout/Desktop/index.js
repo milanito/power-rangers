@@ -1,41 +1,43 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Responsive, Visibility, Container } from 'semantic-ui-react'
+import { isEqual } from 'lodash'
+import { Responsive } from 'semantic-ui-react'
 import { compose, withState, withHandlers } from 'recompose'
 
 import Navbar from './Navbar'
 import Header from '../../Header'
+import Footer from '../../Footer'
+import MainContainer from '../MainContainer'
 import HeaderSegment from '../HeaderSegment'
+import HeaderVisibility from './HeaderVisibility'
 import WithPathnameProps from '../WithPathnameProps'
 
-const MainContainer = styled(Container)`
-  padding: 1em;
-`
-
 const DesktopContainer = ({
-  children, pathname, fixed, showFixedMenu, hideFixedMenu, minheight
+  children, pathname, secondary, showSecondaryMenu, hideSecondaryMenu, minheight
 }) => (
   <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-    <Visibility
+    <Navbar fixed='top' inverted secondary={secondary} />
+    <HeaderVisibility
+      pathname={pathname}
       once={false}
-      onBottomPassed={showFixedMenu}
-      onBottomPassedReverse={hideFixedMenu}
+      onBottomPassed={hideSecondaryMenu}
+      onBottomPassedReverse={showSecondaryMenu}
     >
-      <HeaderSegment inverted vertical textAlign='center' minheight={minheight}>
-        <Navbar fixed={fixed} />
+      <HeaderSegment padded='very' minheight={minheight} pathname={pathname}>
         <Header pathname={pathname} />
       </HeaderSegment>
-    </Visibility>
+    </HeaderVisibility>
     <MainContainer>
       {children}
     </MainContainer>
+    <Footer />
   </Responsive>
 )
 
-export default compose(withState('fixed', 'updateFixed', false),
+export default compose(WithPathnameProps,
+  withState('secondary', 'updateSecondary',
+    ({ pathname }) => isEqual(pathname, '/')),
   withHandlers({
-    hideFixedMenu: ({ updateFixed }) => () => updateFixed(false),
-    showFixedMenu: ({ updateFixed }) => () => updateFixed(true)
-  }),
-  WithPathnameProps
+    hideSecondaryMenu: ({ updateSecondary }) => () => updateSecondary(false),
+    showSecondaryMenu: ({ updateSecondary }) => () => updateSecondary(true)
+  })
 )(DesktopContainer)

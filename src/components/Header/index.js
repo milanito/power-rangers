@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import { isEqual } from 'lodash'
+import { compose } from 'recompose'
 import { Container, Button, Icon } from 'semantic-ui-react'
-import { branch, renderNothing, compose } from 'recompose'
+
+import WithShowOnlyHome from '../WithShowOnlyHome'
 
 const MainTitle = styled.h1`
   font-size: ${props => props.mobile ? '2em !important' : '4em !important'};
@@ -19,8 +20,6 @@ const SubTitle = styled.h2`
   margin-top: ${props => props.mobile ? '0.5em' : '1.5em'};
 `
 
-const willDisplay = branch(({ pathname }) => !isEqual(pathname, '/'), renderNothing)
-
 const Header = ({ mobile, pathname }) => (
   <Container text>
     <MainTitle mobile={mobile} >Power Rangers</MainTitle>
@@ -34,4 +33,4 @@ const Header = ({ mobile, pathname }) => (
   </Container>
 )
 
-export default compose(willDisplay)(Header)
+export default compose(WithShowOnlyHome)(Header)

@@ -8,6 +8,7 @@
     "@reach/router": "^1.2.1",
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.1.22",
+    "gatsby-background-image": "^0.2.73",
     "gatsby-image": "^2.0.31",
     "gatsby-plugin-catch-links": "^2.0.12",
     "gatsby-plugin-feed": "^2.0.14",
