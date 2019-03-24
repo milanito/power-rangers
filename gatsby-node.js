@@ -83,3 +83,24 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
+
+exports.onCreateBabelConfig = ({ stage, actions }, pluginOptions) => {
+  const ssr = isEqual(stage, 'build-html') || isEqual(stage, 'build-javascript')
+
+  actions.setBabelPlugin({
+    name: 'babel-plugin-styled-components',
+    stage,
+    options: { ...pluginOptions, ssr },
+  })
+}
+
+exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
+  const config = getConfig()
+
+  if (stage.startsWith('develop') && config.resolve) {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'react-dom': '@hot-loader/react-dom'
+    }
+  }
+}
