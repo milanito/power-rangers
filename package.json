@@ -78,5 +78,8 @@
     "ignore": [
       "core-js"
     ]
+  },
+  "standard": {
+    "globals": ["describe", "it", "expect"]
   }
 }
