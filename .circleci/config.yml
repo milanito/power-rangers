@@ -26,6 +26,7 @@ jobs:
           root: ~/powerRangers
           paths:
             - node_modules
+
   lint:
     <<: *defaults
     steps:
@@ -33,6 +34,14 @@ jobs:
       - attach_workspace:
           at: ~/powerRangers
       - run: npm run format
+
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/powerRangers
+      - run: npm run test
 
   gatsby-deploy:
     <<: *defaults
@@ -56,12 +65,16 @@ workflows:
   power-rangers:
     jobs:
       - pre-build
+      - test:
+          requires:
+            - pre-build
       - lint:
           requires:
             - pre-build
       - gatsby-deploy:
           requires:
             - lint
+            - test
           filters:
             branches:
               only:
