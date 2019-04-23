@@ -44,7 +44,7 @@
   "devDependencies": {
     "@hot-loader/react-dom": "^16.8.4",
     "babel-jest": "^24.5.0",
-    "babel-preset-gatsby": "^0.1.10",
+    "babel-preset-gatsby": "^0.1.11",
     "gatsby-cli": "^2.4.17",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.5.0",
